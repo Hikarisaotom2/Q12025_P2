@@ -24,7 +24,7 @@ public class Clase_23012025 {
         if(i==numeros.length-1){ //caso base 
             return numeros[i];
         }else{// caso recusivo
-        return numeros[i]+sumarLista(numeros,i++);
+            return numeros[i]+sumarLista(numeros,i++);
         }
     }
     
