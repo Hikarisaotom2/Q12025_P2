@@ -51,9 +51,13 @@ public class Alumno {
         return faltas;
     }
 
-    public void setFaltas(int faltas) {
-        this.faltas = faltas;
-    }
+//    public void setFaltas(int faltas) {
+//        this.faltas = faltas;
+//    }
+    
+    public void aumentarFaltas(){
+        faltas += 1;
+    } 
 
     public String getCarrera() {
         return carrera;
@@ -65,7 +69,9 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "Alumno{" + "nombre=" + nombre + ", Apellido=" + Apellido + ", cuenta=" + cuenta + ", faltas=" + faltas + ", carrera=" + carrera + '}';
+            // -> Juan perez (0)
+        return "->" + nombre + " " + Apellido + "("+ faltas+" faltas)";
+        
     }
     
 }

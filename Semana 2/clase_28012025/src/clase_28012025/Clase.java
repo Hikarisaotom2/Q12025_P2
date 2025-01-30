@@ -58,17 +58,25 @@ public class Clase {
            System.out.println(nombre);
            System.out.println("El alumno esta presente? 1. si, 2. no ");
            int presente = entrada.nextInt();
-           /*
-           verificar si el valor es 1 o 2 
-           si el valor 1 , no aumentamos inasistencia 
-           sino, aumentamos las faltas 
-           */
+            if(presente!=1){
+//                int faltas = alumno.getFaltas();
+//               alumno.setFaltas(faltas+1);
+                alumno.aumentarFaltas();
+           }
        }
    }
 
     @Override
     public String toString() {
-        return "Clase{" + "nombre=" + nombre + ", seccion=" + seccion + ", alumnos=" + alumnos + '}';
+        String listaAlumnos ="";
+        for (int i = 0; i < alumnos.size(); i++) {
+            Alumno alumno = alumnos.get(i);
+            // concatenación : unir un string con algo
+            listaAlumnos += alumno.toString()+"\n";
+        }
+
+        return nombre+"- "+seccion+"\n"+listaAlumnos;
+   
     }
     
     
