@@ -49,7 +49,6 @@ public class Clase {
     
     //Asistencia. 
    public void pasarLista(){
-  
        Scanner entrada = new Scanner(System.in);
        for (int i = 0; i < alumnos.size(); i++) {
 //           String nombre = alumnos.get(i).getNombre();
@@ -78,9 +77,6 @@ public class Clase {
         return nombre+"- "+seccion+"\n"+listaAlumnos;
    
     }
-    
-    
-    
-    
+
     
 }
