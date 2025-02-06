@@ -14,14 +14,15 @@ package clase.pkg04022025;
     siempre le corresponde al hijo, decir quien es su padre.
     */
                       // extends nombrePadre
+            // Fememnino y Paciente   
 public class Femenino extends Paciente {
     /*
         Por que no ponemos los atributos? 
         R// no queremos repetir codigo, al establecer la herencia los atributos seran prestados por el padre 
     */
      // información extra que nos interesa, cosas especificas 
-    String fechaDeMamografia;
-    String ultimoPeriodoMenstrual;
+    private String fechaDeMamografia;
+    private String ultimoPeriodoMenstrual;
  
 
     public Femenino(String fechaDeMamografia, String ultimoPeriodoMenstrual, String nombre, String apellido, int edad, String enfermedadBase) {
@@ -30,6 +31,10 @@ public class Femenino extends Paciente {
         this.ultimoPeriodoMenstrual = ultimoPeriodoMenstrual;
         
     }
-   
+    
+    public void consultaFemenina(){
+        System.out.println("Este metodo es exclusivo para los objetos del tipo paciente femenino");
+    }
+       
    
 }

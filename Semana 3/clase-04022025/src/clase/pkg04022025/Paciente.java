@@ -9,10 +9,16 @@ package clase.pkg04022025;
  * @author claudiacortes
  */
 public class Paciente {
-    String nombre;
-    String apellido;
-    int edad; 
-    String enfermedadBase;
+    /*
+    private 
+    public 
+    protected : 
+    */
+    protected String nombre;
+    protected String apellido;
+    protected int edad; 
+    protected String enfermedadBase;
+    
 
     public Paciente(String nombre, String apellido, int edad, String enfermedadBase) {
         this.nombre = nombre;
