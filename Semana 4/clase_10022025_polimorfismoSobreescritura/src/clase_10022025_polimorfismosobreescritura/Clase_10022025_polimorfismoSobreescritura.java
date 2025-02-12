@@ -20,6 +20,8 @@ public class Clase_10022025_polimorfismoSobreescritura {
             1.  realizar la herencia con normalidad
             2. Identificar el metodo delpadre que qqueremos cambiar 
             3. Recordar y respetar a definición del metodo como esta en el padre. 
+            4. El hijo puede o no decicidir si implementar el polimorfismo, 
+                ES OPCIONAL QUE HAGAMOS EL METODO
         */
        /*
         DOCENTES (PADRE)

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package clase_10022025_polimorfismosobreescritura;
+package clase_11022025_polimorfismoclasesabstractas;
 
 /**
  *
@@ -24,8 +24,7 @@ public class DocentePlanta extends Docente{
         this.sueldoMensual = sueldoMensual;
     }
     
-    // calcularle el sueldo...... 
-    @Override
+   @Override
     public void calcularSueldo(){
        double deducciones = 500+320.98;
        double sueldoNeto = sueldoMensual-deducciones;
@@ -34,13 +33,6 @@ public class DocentePlanta extends Docente{
         System.out.println("-> deducciones: "+ deducciones);
         System.out.println("-> SUELDO NETO: "+sueldoNeto );
     }
-
-    @Override
-    public String toString() {
-        return "DocentePlanta{" + "sueldoMensual=" + sueldoMensual + '}';
-    }
     
     
-    
-  
 }
