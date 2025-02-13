@@ -47,16 +47,24 @@ public class Clase_10022025_polimorfismoSobreescritura {
                 -> pago fijo mensual 
                 -> bonos 
                 -> IHSS, RAP, ISR 
+                        -> 18000 >= 15 % 
+                        -> 36000 => 20%
+                        -> 50000=> 30%
                  
         */
        
        
-       Docente d = new Docente("Claudia", "Cortes", "sistemas", "sistemas", 123);
-       Docente p = new DocentePlanta(10000,"Claudia", "Cortes", "sistemas", "sistemas", 123);
-       
-       d.calcularSueldo();
-       
-       p.calcularSueldo();
+       Docente d = new Docente("Juan", "Perez", "sistemas", "sistemas", 123);
+       Docente planta = new DocentePlanta(10000,"Martin", "Galvez", "sistemas", "sistemas", 123);
+       Docente hora = new DocenteHora(5,10000,"Claudia", "Cortes", "sistemas", "sistemas", 123);
+       Docente jefe = new DocenteInvestigador_Jefecarrera(70000,7000,"Reynod", "Bocanegra", "sistemas", "sistemas", 123);
+        System.out.println("CALCULO DE SUELDOS");
+        System.out.println("Docente planta");
+        planta.calcularSueldo();
+        System.out.println("Docente Hora");
+        hora.calcularSueldo();
+        System.out.println("Docente investigador / jefe");
+        jefe.calcularSueldo();
     }
     
 }
