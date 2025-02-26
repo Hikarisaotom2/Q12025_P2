@@ -5,6 +5,7 @@
 package clase_24022025;
 
 import java.awt.Color;
+import java.awt.Font;
 import javax.swing.JColorChooser;
 
 /**
@@ -30,9 +31,6 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jtp_pestanas = new javax.swing.JTabbedPane();
-        jp_pestana2 = new javax.swing.JPanel();
-        jp_pestana3 = new javax.swing.JPanel();
-        jp_pestana4 = new javax.swing.JPanel();
         jp_pestana1 = new javax.swing.JPanel();
         lbl_texto = new javax.swing.JLabel();
         txt_fuente = new javax.swing.JTextField();
@@ -47,49 +45,26 @@ public class Principal extends javax.swing.JFrame {
         txt_tamano = new javax.swing.JTextField();
         btn_guardarfuente = new javax.swing.JButton();
         btn_guardarTamano = new javax.swing.JButton();
+        jp_pestana2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        lbl_mensajeMenu = new javax.swing.JLabel();
+        jp_pestana3 = new javax.swing.JPanel();
+        jp_pestana4 = new javax.swing.JPanel();
+        jmb_principal = new javax.swing.JMenuBar();
+        jm_file = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jp_pestana2Layout = new javax.swing.GroupLayout(jp_pestana2);
-        jp_pestana2.setLayout(jp_pestana2Layout);
-        jp_pestana2Layout.setHorizontalGroup(
-            jp_pestana2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 757, Short.MAX_VALUE)
-        );
-        jp_pestana2Layout.setVerticalGroup(
-            jp_pestana2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 457, Short.MAX_VALUE)
-        );
-
-        jtp_pestanas.addTab("tab2", jp_pestana2);
-
-        javax.swing.GroupLayout jp_pestana3Layout = new javax.swing.GroupLayout(jp_pestana3);
-        jp_pestana3.setLayout(jp_pestana3Layout);
-        jp_pestana3Layout.setHorizontalGroup(
-            jp_pestana3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 757, Short.MAX_VALUE)
-        );
-        jp_pestana3Layout.setVerticalGroup(
-            jp_pestana3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 457, Short.MAX_VALUE)
-        );
-
-        jtp_pestanas.addTab("tab3", jp_pestana3);
-
-        javax.swing.GroupLayout jp_pestana4Layout = new javax.swing.GroupLayout(jp_pestana4);
-        jp_pestana4.setLayout(jp_pestana4Layout);
-        jp_pestana4Layout.setHorizontalGroup(
-            jp_pestana4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 757, Short.MAX_VALUE)
-        );
-        jp_pestana4Layout.setVerticalGroup(
-            jp_pestana4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 457, Short.MAX_VALUE)
-        );
-
-        jtp_pestanas.addTab("tab4", jp_pestana4);
-
         lbl_texto.setText("Texto");
+        lbl_texto.setOpaque(true);
 
         jLabel2.setText("Fuente");
 
@@ -109,12 +84,32 @@ public class Principal extends javax.swing.JFrame {
         });
 
         btn_bg.setText("select");
+        btn_bg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_bgMouseClicked(evt);
+            }
+        });
 
         jcb_estilo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bold", "Italic", "Plain" }));
+        jcb_estilo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcb_estiloActionPerformed(evt);
+            }
+        });
 
         btn_guardarfuente.setText("Guardar");
+        btn_guardarfuente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_guardarfuenteMouseClicked(evt);
+            }
+        });
 
         btn_guardarTamano.setText("Guardar");
+        btn_guardarTamano.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_guardarTamanoMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jp_pestana1Layout = new javax.swing.GroupLayout(jp_pestana1);
         jp_pestana1.setLayout(jp_pestana1Layout);
@@ -188,21 +183,119 @@ public class Principal extends javax.swing.JFrame {
 
         jtp_pestanas.addTab("Fuente", jp_pestana1);
 
+        jLabel1.setText("Se ejecuto: ");
+
+        lbl_mensajeMenu.setText("jLabel7");
+
+        javax.swing.GroupLayout jp_pestana2Layout = new javax.swing.GroupLayout(jp_pestana2);
+        jp_pestana2.setLayout(jp_pestana2Layout);
+        jp_pestana2Layout.setHorizontalGroup(
+            jp_pestana2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_pestana2Layout.createSequentialGroup()
+                .addGroup(jp_pestana2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_pestana2Layout.createSequentialGroup()
+                        .addGap(279, 279, 279)
+                        .addComponent(jLabel1))
+                    .addGroup(jp_pestana2Layout.createSequentialGroup()
+                        .addGap(293, 293, 293)
+                        .addComponent(lbl_mensajeMenu)))
+                .addContainerGap(409, Short.MAX_VALUE))
+        );
+        jp_pestana2Layout.setVerticalGroup(
+            jp_pestana2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_pestana2Layout.createSequentialGroup()
+                .addGap(129, 129, 129)
+                .addComponent(jLabel1)
+                .addGap(34, 34, 34)
+                .addComponent(lbl_mensajeMenu)
+                .addContainerGap(260, Short.MAX_VALUE))
+        );
+
+        jtp_pestanas.addTab("opciones del menu", jp_pestana2);
+
+        javax.swing.GroupLayout jp_pestana3Layout = new javax.swing.GroupLayout(jp_pestana3);
+        jp_pestana3.setLayout(jp_pestana3Layout);
+        jp_pestana3Layout.setHorizontalGroup(
+            jp_pestana3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 757, Short.MAX_VALUE)
+        );
+        jp_pestana3Layout.setVerticalGroup(
+            jp_pestana3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 457, Short.MAX_VALUE)
+        );
+
+        jtp_pestanas.addTab("tab3", jp_pestana3);
+
+        javax.swing.GroupLayout jp_pestana4Layout = new javax.swing.GroupLayout(jp_pestana4);
+        jp_pestana4.setLayout(jp_pestana4Layout);
+        jp_pestana4Layout.setHorizontalGroup(
+            jp_pestana4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 757, Short.MAX_VALUE)
+        );
+        jp_pestana4Layout.setVerticalGroup(
+            jp_pestana4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 457, Short.MAX_VALUE)
+        );
+
+        jtp_pestanas.addTab("tab4", jp_pestana4);
+
+        jm_file.setText("File");
+
+        jMenuItem1.setText("Abrir");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jm_file.add(jMenuItem1);
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("Debug mode");
+        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem1ActionPerformed(evt);
+            }
+        });
+        jm_file.add(jCheckBoxMenuItem1);
+
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("Radio button");
+        jm_file.add(jRadioButtonMenuItem1);
+        jm_file.add(jSeparator1);
+
+        jMenu1.setText("Mas opciones");
+
+        jMenuItem2.setText("jMenuItem2");
+        jMenu1.add(jMenuItem2);
+
+        jMenu2.setText("submenu2");
+
+        jMenuItem3.setText("jMenuItem3");
+        jMenu2.add(jMenuItem3);
+
+        jMenu1.add(jMenu2);
+
+        jm_file.add(jMenu1);
+
+        jmb_principal.add(jm_file);
+
+        setJMenuBar(jmb_principal);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(26, 26, 26)
                 .addComponent(jtp_pestanas, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(18, 18, 18)
                 .addComponent(jtp_pestanas, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         pack();
@@ -211,11 +304,87 @@ public class Principal extends javax.swing.JFrame {
     private void btn_foregroundMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_foregroundMouseClicked
         //JColorChooser -> PascalCase 
        Color seleccionado =  JColorChooser.showDialog(this, "Foreground color", Color.MAGENTA);
-        
         lbl_texto.setForeground(seleccionado);
-        
-        
     }//GEN-LAST:event_btn_foregroundMouseClicked
+
+    private void btn_bgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_bgMouseClicked
+        // TODO add your handling code here:
+          Color seleccionado =  JColorChooser.showDialog(this, "BG Color color", Color.MAGENTA);
+//          lbl_texto.setOpaque(true);
+          lbl_texto.setBackground(seleccionado);
+          
+    }//GEN-LAST:event_btn_bgMouseClicked
+
+    private void btn_guardarfuenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarfuenteMouseClicked
+        // TODO add your handling code here:
+        /*
+        
+        JLabel {
+        Color foreground
+        Color background
+        String text......
+        Font font
+
+        }
+        
+        
+        
+        Font {
+        String familiy 
+        int size
+        ENUM style
+        }
+
+        
+        */
+        
+        
+        String fuente = txt_fuente.getText();
+        /// No tenemos tenemos setters .... 
+        // 1) tipo de letra 
+        //2) estilo de la letra(negrita, italico, sub....)
+        // 3) tamano 
+        int size = lbl_texto.getFont().getSize();
+        int style = lbl_texto.getFont().getStyle();
+        Font nuevaFuente = new Font(fuente,style,size);
+        lbl_texto.setFont(nuevaFuente);
+    }//GEN-LAST:event_btn_guardarfuenteMouseClicked
+
+    private void btn_guardarTamanoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarTamanoMouseClicked
+        int tamano = Integer.parseInt(txt_tamano.getText());
+        String fuente = lbl_texto.getFont().getFamily();
+        int style = lbl_texto.getFont().getSize();
+        Font nuevaFuente = new Font(fuente,style, tamano);
+        lbl_texto.setFont(nuevaFuente);
+    }//GEN-LAST:event_btn_guardarTamanoMouseClicked
+
+    private void jcb_estiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_estiloActionPerformed
+        int style;
+        switch (jcb_estilo.getSelectedIndex()) {
+            case 0: //bolld 
+                style = Font.BOLD;
+                break;
+            case 1: //italic 
+                style = Font.ITALIC;
+                break;
+            default: //Plain
+                style = Font.PLAIN;
+        }
+        
+        int size = lbl_texto.getFont().getSize();
+        String fuente = lbl_texto.getFont().getFamily();
+         Font nuevaFuente = new Font(fuente,style, size);
+        lbl_texto.setFont(nuevaFuente);
+ 
+    }//GEN-LAST:event_jcb_estiloActionPerformed
+
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+       lbl_mensajeMenu.setText("Click desde el menu bar en abrir!");
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,17 +426,29 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btn_foreground;
     private javax.swing.JButton btn_guardarTamano;
     private javax.swing.JButton btn_guardarfuente;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JComboBox<String> jcb_estilo;
+    private javax.swing.JMenu jm_file;
+    private javax.swing.JMenuBar jmb_principal;
     private javax.swing.JPanel jp_pestana1;
     private javax.swing.JPanel jp_pestana2;
     private javax.swing.JPanel jp_pestana3;
     private javax.swing.JPanel jp_pestana4;
     private javax.swing.JTabbedPane jtp_pestanas;
+    private javax.swing.JLabel lbl_mensajeMenu;
     private javax.swing.JLabel lbl_texto;
     private javax.swing.JTextField txt_fuente;
     private javax.swing.JTextField txt_tamano;
