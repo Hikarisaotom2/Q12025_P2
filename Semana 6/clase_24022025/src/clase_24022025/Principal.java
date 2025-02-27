@@ -7,6 +7,7 @@ package clase_24022025;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JColorChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,6 +31,9 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jpm_emergente = new javax.swing.JPopupMenu();
+        jmi_limpiar = new javax.swing.JMenuItem();
+        jmi_guardar = new javax.swing.JMenuItem();
         jtp_pestanas = new javax.swing.JTabbedPane();
         jp_pestana1 = new javax.swing.JPanel();
         lbl_texto = new javax.swing.JLabel();
@@ -49,7 +53,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lbl_mensajeMenu = new javax.swing.JLabel();
         jp_pestana3 = new javax.swing.JPanel();
+        jchk_terminos = new javax.swing.JCheckBox();
+        btn_continuar = new javax.swing.JButton();
         jp_pestana4 = new javax.swing.JPanel();
+        txt_textoPopUp = new javax.swing.JTextField();
         jmb_principal = new javax.swing.JMenuBar();
         jm_file = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -61,10 +68,28 @@ public class Principal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
 
+        jmi_limpiar.setText("Abrir");
+        jmi_limpiar.setActionCommand("Limpiar");
+        jmi_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_limpiarActionPerformed(evt);
+            }
+        });
+        jpm_emergente.add(jmi_limpiar);
+
+        jmi_guardar.setText("Guardar");
+        jpm_emergente.add(jmi_guardar);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lbl_texto.setText("Texto");
         lbl_texto.setOpaque(true);
+
+        txt_fuente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_fuenteActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Fuente");
 
@@ -213,31 +238,67 @@ public class Principal extends javax.swing.JFrame {
 
         jtp_pestanas.addTab("opciones del menu", jp_pestana2);
 
+        jchk_terminos.setText("Acepto los terminos y condiciones");
+        jchk_terminos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jchk_terminosMouseClicked(evt);
+            }
+        });
+
+        btn_continuar.setText("Continuar");
+        btn_continuar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_continuarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jp_pestana3Layout = new javax.swing.GroupLayout(jp_pestana3);
         jp_pestana3.setLayout(jp_pestana3Layout);
         jp_pestana3Layout.setHorizontalGroup(
             jp_pestana3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 757, Short.MAX_VALUE)
+            .addGroup(jp_pestana3Layout.createSequentialGroup()
+                .addGap(238, 238, 238)
+                .addGroup(jp_pestana3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jchk_terminos))
+                .addContainerGap(295, Short.MAX_VALUE))
         );
         jp_pestana3Layout.setVerticalGroup(
             jp_pestana3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 457, Short.MAX_VALUE)
+            .addGroup(jp_pestana3Layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jchk_terminos, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(96, 96, 96)
+                .addComponent(btn_continuar)
+                .addContainerGap(212, Short.MAX_VALUE))
         );
 
-        jtp_pestanas.addTab("tab3", jp_pestana3);
+        jtp_pestanas.addTab("Checkbox", jp_pestana3);
+
+        jp_pestana4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jp_pestana4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jp_pestana4Layout = new javax.swing.GroupLayout(jp_pestana4);
         jp_pestana4.setLayout(jp_pestana4Layout);
         jp_pestana4Layout.setHorizontalGroup(
             jp_pestana4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 757, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_pestana4Layout.createSequentialGroup()
+                .addContainerGap(185, Short.MAX_VALUE)
+                .addComponent(txt_textoPopUp, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(154, 154, 154))
         );
         jp_pestana4Layout.setVerticalGroup(
             jp_pestana4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 457, Short.MAX_VALUE)
+            .addGroup(jp_pestana4Layout.createSequentialGroup()
+                .addGap(116, 116, 116)
+                .addComponent(txt_textoPopUp, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(259, Short.MAX_VALUE))
         );
 
-        jtp_pestanas.addTab("tab4", jp_pestana4);
+        jtp_pestanas.addTab("Pop up menu", jp_pestana4);
 
         jm_file.setText("File");
 
@@ -386,6 +447,42 @@ public class Principal extends javax.swing.JFrame {
        lbl_mensajeMenu.setText("Click desde el menu bar en abrir!");
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jp_pestana4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_pestana4MouseClicked
+        int x = evt.getX();
+        int y = evt.getY();
+        //mostrar el pop up menu 
+     jpm_emergente.show(jp_pestana4,x,y);
+     
+    }//GEN-LAST:event_jp_pestana4MouseClicked
+
+    private void jmi_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_limpiarActionPerformed
+    txt_textoPopUp.setText("");
+    txt_fuente.setText("Limpio gracias al pop up menu");
+    
+    }//GEN-LAST:event_jmi_limpiarActionPerformed
+
+    private void txt_fuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fuenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_fuenteActionPerformed
+
+    private void btn_continuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_continuarMouseClicked
+       if(jchk_terminos.isSelected()){
+           JOptionPane.showMessageDialog(this, "Bienvenido!");
+       }else{
+           JOptionPane.showMessageDialog(this, "Acepte los terminos y condiciones antes de continuar");
+       }
+       
+       
+    }//GEN-LAST:event_btn_continuarMouseClicked
+
+    private void jchk_terminosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jchk_terminosMouseClicked
+          if(jchk_terminos.isSelected()){
+           JOptionPane.showMessageDialog(this, "Bienvenido!");
+       }else{
+           JOptionPane.showMessageDialog(this, "Acepte los terminos y condiciones antes de continuar");
+       }
+    }//GEN-LAST:event_jchk_terminosMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -423,6 +520,7 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_bg;
+    private javax.swing.JButton btn_continuar;
     private javax.swing.JButton btn_foreground;
     private javax.swing.JButton btn_guardarTamano;
     private javax.swing.JButton btn_guardarfuente;
@@ -441,16 +539,21 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JComboBox<String> jcb_estilo;
+    private javax.swing.JCheckBox jchk_terminos;
     private javax.swing.JMenu jm_file;
     private javax.swing.JMenuBar jmb_principal;
+    private javax.swing.JMenuItem jmi_guardar;
+    private javax.swing.JMenuItem jmi_limpiar;
     private javax.swing.JPanel jp_pestana1;
     private javax.swing.JPanel jp_pestana2;
     private javax.swing.JPanel jp_pestana3;
     private javax.swing.JPanel jp_pestana4;
+    private javax.swing.JPopupMenu jpm_emergente;
     private javax.swing.JTabbedPane jtp_pestanas;
     private javax.swing.JLabel lbl_mensajeMenu;
     private javax.swing.JLabel lbl_texto;
     private javax.swing.JTextField txt_fuente;
     private javax.swing.JTextField txt_tamano;
+    private javax.swing.JTextField txt_textoPopUp;
     // End of variables declaration//GEN-END:variables
 }
