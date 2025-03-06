@@ -4,6 +4,8 @@
  */
 package clase_03032025;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -30,6 +32,8 @@ public class Principal extends javax.swing.JFrame {
         
        // actualizar el arbol y como se ve 
         modeloArbol.reload();
+        DefaultListModel modeloLista = new DefaultListModel();
+        jl_personas.setModel(modeloLista);
     }
     
     public void agregarCategorias(){
@@ -81,7 +85,13 @@ public class Principal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         lbl_nombre = new javax.swing.JLabel();
         lbl_apellido = new javax.swing.JLabel();
+        btn_eliminar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jl_personas = new javax.swing.JList<>();
+        jLabel4 = new javax.swing.JLabel();
+        lbl_seleccionadoLista = new javax.swing.JLabel();
+        btn_eliminarLista = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -148,6 +158,13 @@ public class Principal extends javax.swing.JFrame {
 
         lbl_apellido.setText("Nombre");
 
+        btn_eliminar.setText("Eliminar");
+        btn_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_eliminarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -169,17 +186,19 @@ public class Principal extends javax.swing.JFrame {
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jcb_tipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txt_apellido, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(267, 267, 267)
-                        .addComponent(btn_agregar))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btn_agregar)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jcb_tipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txt_apellido, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addComponent(lbl_nombre)
-                        .addGap(257, 257, 257)
-                        .addComponent(lbl_apellido)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_eliminar)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbl_nombre)
+                                .addGap(257, 257, 257)
+                                .addComponent(lbl_apellido)))))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -199,9 +218,11 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcb_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(11, 11, 11)
-                .addComponent(btn_agregar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_agregar)
+                    .addComponent(btn_eliminar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_nombre)
                     .addComponent(lbl_apellido))
@@ -210,15 +231,56 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Arbol", jPanel1);
 
+        jl_personas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_personasMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jl_personas);
+
+        jLabel4.setText("Usuarios Creados");
+
+        lbl_seleccionadoLista.setText("jLabel5");
+
+        btn_eliminarLista.setText("Eliminar");
+        btn_eliminarLista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_eliminarListaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 668, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(227, 227, 227)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(253, 253, 253)
+                        .addComponent(lbl_seleccionadoLista))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(237, 237, 237)
+                        .addComponent(btn_eliminarLista)))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 454, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(lbl_seleccionadoLista)
+                .addGap(18, 18, 18)
+                .addComponent(btn_eliminarLista)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Lista", jPanel2);
@@ -243,14 +305,14 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         pack();
@@ -266,12 +328,17 @@ public class Principal extends javax.swing.JFrame {
         DefaultTreeModel modelo = (DefaultTreeModel) jt_arbol.getModel();
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modelo.getRoot();
         
+          //agregar elementos a la lista
+        DefaultListModel modeloLista = (DefaultListModel) jl_personas.getModel();
+       
+        
         if(jcb_tipo.getSelectedIndex() == 0){
             // agregar alumno
             Alumno nuevoAlumno = new Alumno(nombre,apellido);
             DefaultMutableTreeNode alumnos = (DefaultMutableTreeNode)raiz.getChildAt(0);
             DefaultMutableTreeNode nuevoNodo = new DefaultMutableTreeNode(nuevoAlumno);
             alumnos.add(nuevoNodo);
+            modeloLista.addElement(nuevoAlumno);
         }else{
             // agregar docente
             Docente nuevoDocente = new Docente(nombre,apellido);
@@ -280,8 +347,11 @@ public class Principal extends javax.swing.JFrame {
             DefaultMutableTreeNode docentes = (DefaultMutableTreeNode)raiz.getChildAt(1);
            
             docentes.add(nuevoNodo);
+            modeloLista.addElement(nuevoDocente);
         }
         modelo.reload();
+        
+      
     }//GEN-LAST:event_btn_agregarMouseClicked
 
     private void jt_arbolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_arbolMouseClicked
@@ -302,6 +372,44 @@ public class Principal extends javax.swing.JFrame {
         }
 //        raiz>nodo x>hoja 
     }//GEN-LAST:event_jt_arbolMouseClicked
+
+    private void btn_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminarMouseClicked
+        Object seleccionado = jt_arbol.getSelectionPath().getLastPathComponent();
+        DefaultMutableTreeNode nodoSeleccionado = (DefaultMutableTreeNode) seleccionado;
+        DefaultMutableTreeNode nodoPadre = (DefaultMutableTreeNode)nodoSeleccionado.getParent();
+        if (nodoSeleccionado.isLeaf() && !nodoPadre.isRoot()) {
+            nodoSeleccionado.removeFromParent();
+            DefaultTreeModel modelo = (DefaultTreeModel) jt_arbol.getModel();
+            modelo.reload();
+            JOptionPane.showMessageDialog(this, "Elemento eliminado!");
+        } else if(nodoSeleccionado.isRoot()) {
+            JOptionPane.showMessageDialog(this, "No se puede eliminar la raiz");
+        }else{
+            JOptionPane.showMessageDialog(this, "No se pueden eliminar los nodos de las categorias");
+        }
+        
+    }//GEN-LAST:event_btn_eliminarMouseClicked
+
+    private void jl_personasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_personasMouseClicked
+        // TODO add your handling code here:
+            int i = jl_personas.getSelectedIndex();
+
+            DefaultListModel modeloLista = (DefaultListModel) jl_personas.getModel();
+            Object objeto = modeloLista.getElementAt(i);
+            if(objeto instanceof Alumno){
+                System.out.println("Alumno"); 
+            }else if(objeto instanceof Docente){
+                System.out.println("Maestro");
+            }
+             lbl_seleccionadoLista.setText(objeto.toString());
+    }//GEN-LAST:event_jl_personasMouseClicked
+
+    private void btn_eliminarListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminarListaMouseClicked
+        int i = jl_personas.getSelectedIndex();
+         DefaultListModel modeloLista = (DefaultListModel) jl_personas.getModel();
+         modeloLista.remove(i);
+          JOptionPane.showMessageDialog(this, "Se elimino el elemento de la lista");
+    }//GEN-LAST:event_btn_eliminarListaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -341,18 +449,24 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregar;
+    private javax.swing.JButton btn_eliminar;
+    private javax.swing.JButton btn_eliminarLista;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JComboBox<String> jcb_tipo;
+    private javax.swing.JList<String> jl_personas;
     private javax.swing.JTree jt_arbol;
     private javax.swing.JLabel lbl_apellido;
     private javax.swing.JLabel lbl_nombre;
+    private javax.swing.JLabel lbl_seleccionadoLista;
     private javax.swing.JTextField txt_apellido;
     private javax.swing.JTextField txt_nombre;
     // End of variables declaration//GEN-END:variables
