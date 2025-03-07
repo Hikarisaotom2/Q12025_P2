@@ -6,6 +6,7 @@ package clase_03032025;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -34,6 +35,12 @@ public class Principal extends javax.swing.JFrame {
         modeloArbol.reload();
         DefaultListModel modeloLista = new DefaultListModel();
         jl_personas.setModel(modeloLista);
+        
+        //Modificar modelo de la tabla 
+        DefaultTableModel modeloTabla = (DefaultTableModel)jt_usuarios.getModel();
+        modeloTabla.addColumn("Tipo de usuario");
+        modeloTabla.addColumn("Nombre");
+        modeloTabla.addColumn("Apellido");
     }
     
     public void agregarCategorias(){
@@ -93,6 +100,14 @@ public class Principal extends javax.swing.JFrame {
         lbl_seleccionadoLista = new javax.swing.JLabel();
         btn_eliminarLista = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jt_usuarios = new javax.swing.JTable();
+        lbl_fila = new javax.swing.JLabel();
+        lbl_columna = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        lbl_datoSeleccionado = new javax.swing.JLabel();
+        btn_eliminarFila = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -285,15 +300,85 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Lista", jPanel2);
 
+        jt_usuarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jt_usuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_usuariosMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jt_usuarios);
+
+        lbl_fila.setText("jLabel5");
+
+        lbl_columna.setText("jLabel6");
+
+        jLabel5.setText("Fila");
+
+        jLabel6.setText("Columna");
+
+        lbl_datoSeleccionado.setText("jLabel7");
+
+        btn_eliminarFila.setText("Eliminar");
+        btn_eliminarFila.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_eliminarFilaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 668, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5))
+                                .addGap(34, 34, 34)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbl_fila)
+                                    .addComponent(lbl_columna)))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(238, 238, 238)
+                        .addComponent(lbl_datoSeleccionado)
+                        .addGap(160, 160, 160)
+                        .addComponent(btn_eliminarFila)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 454, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_fila)
+                    .addComponent(jLabel5))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_datoSeleccionado)
+                            .addComponent(btn_eliminarFila))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_columna))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel6)))
+                .addGap(79, 79, 79))
         );
 
         jTabbedPane1.addTab("Tabla", jPanel3);
@@ -331,6 +416,8 @@ public class Principal extends javax.swing.JFrame {
           //agregar elementos a la lista
         DefaultListModel modeloLista = (DefaultListModel) jl_personas.getModel();
        
+        //Agregar elementos a la tabla 
+        DefaultTableModel modeloTabla = (DefaultTableModel)jt_usuarios.getModel();
         
         if(jcb_tipo.getSelectedIndex() == 0){
             // agregar alumno
@@ -339,6 +426,8 @@ public class Principal extends javax.swing.JFrame {
             DefaultMutableTreeNode nuevoNodo = new DefaultMutableTreeNode(nuevoAlumno);
             alumnos.add(nuevoNodo);
             modeloLista.addElement(nuevoAlumno);
+            
+            modeloTabla.addRow(new Object[]{"Alumno",nuevoAlumno.nombre, nuevoAlumno.apellido});
         }else{
             // agregar docente
             Docente nuevoDocente = new Docente(nombre,apellido);
@@ -348,6 +437,8 @@ public class Principal extends javax.swing.JFrame {
            
             docentes.add(nuevoNodo);
             modeloLista.addElement(nuevoDocente);
+            Object[] elementos = {"Docente",nuevoDocente.nombre,nuevoDocente.apellido};
+            modeloTabla.addRow(elementos);
         }
         modelo.reload();
         
@@ -411,6 +502,22 @@ public class Principal extends javax.swing.JFrame {
           JOptionPane.showMessageDialog(this, "Se elimino el elemento de la lista");
     }//GEN-LAST:event_btn_eliminarListaMouseClicked
 
+    private void jt_usuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_usuariosMouseClicked
+        int columna= jt_usuarios.getSelectedColumn();
+        int fila = jt_usuarios.getSelectedRow();
+        DefaultTableModel modelo = (DefaultTableModel)jt_usuarios.getModel();
+        Object objeto = modelo.getValueAt(fila, columna);
+        lbl_fila.setText(fila+"");
+        lbl_columna.setText(columna+"");
+        lbl_datoSeleccionado.setText(objeto.toString());
+    }//GEN-LAST:event_jt_usuariosMouseClicked
+
+    private void btn_eliminarFilaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminarFilaMouseClicked
+         int fila = jt_usuarios.getSelectedRow();
+         DefaultTableModel modelo = (DefaultTableModel)jt_usuarios.getModel();
+         modelo.removeRow(fila);
+    }//GEN-LAST:event_btn_eliminarFilaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -450,21 +557,29 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregar;
     private javax.swing.JButton btn_eliminar;
+    private javax.swing.JButton btn_eliminarFila;
     private javax.swing.JButton btn_eliminarLista;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JComboBox<String> jcb_tipo;
     private javax.swing.JList<String> jl_personas;
     private javax.swing.JTree jt_arbol;
+    private javax.swing.JTable jt_usuarios;
     private javax.swing.JLabel lbl_apellido;
+    private javax.swing.JLabel lbl_columna;
+    private javax.swing.JLabel lbl_datoSeleccionado;
+    private javax.swing.JLabel lbl_fila;
     private javax.swing.JLabel lbl_nombre;
     private javax.swing.JLabel lbl_seleccionadoLista;
     private javax.swing.JTextField txt_apellido;
