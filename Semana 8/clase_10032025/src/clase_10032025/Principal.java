@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -112,7 +113,32 @@ public class Principal extends javax.swing.JFrame {
                 String linea ;
                do {
                     linea = br.readLine();
+                     if(linea != null){
+                         String [] elementos = linea.split(",");
+                     if(elementos.length <5){
+                         System.out.println("Linea imcompleta");
+                         System.out.println(linea);
+                     }else{
+                         // Parseo: leer informacion que viene en un formato y analizarla y separarla
+                         System.out.println("INFORMACION PARA CREAR UN OBJETO");
+                         // convertir de string a un numero
+                         int dinero = Integer.parseInt(elementos[3]);
+                         // crear el arreglo de los juegos 
+                         String cadena = elementos[4];
+                        // Substring
+                       cadena = cadena.substring(1, cadena.length()-1);
+                        //Replace
+//                        cadena = cadena.replace("[","");
+//                        cadena =cadena.replace("]","");
+
+                        System.out.println(cadena);
+                       String[] juegos = cadena.split("-");                     
+                         Usuario nuevo = new Usuario(elementos[0],elementos[1],elementos[2],dinero,juegos);
+                         usuarios.add(nuevo);
+                     }
+                    
                     txt_info.append(linea+"\n");
+                     }
                }while(linea!=null);
                 System.out.println("Llegamos al final del file");
                 
@@ -163,7 +189,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
     }
-
+    ArrayList<Usuario> usuarios = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cargar;
     private javax.swing.JButton btn_guardar;
