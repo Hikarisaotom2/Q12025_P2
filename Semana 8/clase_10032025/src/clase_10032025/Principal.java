@@ -5,14 +5,21 @@
 package clase_10032025;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,19 +43,31 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_info = new javax.swing.JTextArea();
-        btn_cargar = new javax.swing.JButton();
         btn_guardar = new javax.swing.JButton();
+        btn_cargar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jpanel_muestra = new javax.swing.JPanel();
+        btn_abrirBinario = new javax.swing.JButton();
+        btn_guardarBinario = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txt_binario = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("Texto");
 
         txt_info.setColumns(20);
         txt_info.setRows(5);
         jScrollPane1.setViewportView(txt_info);
+
+        btn_guardar.setText("Guardar");
+        btn_guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_guardarMouseClicked(evt);
+            }
+        });
 
         btn_cargar.setText("Cargar");
         btn_cargar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -57,39 +76,106 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btn_guardar.setText("Guardar");
+        jLabel1.setText("Texto");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(314, 314, 314)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(155, 155, 155)
+                .addComponent(btn_cargar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_guardar)
+                .addGap(285, 285, 285))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_cargar)
+                    .addComponent(btn_guardar))
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Archivos Texto", jPanel1);
+
+        btn_abrirBinario.setText("Abrir Binario");
+        btn_abrirBinario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_abrirBinarioMouseClicked(evt);
+            }
+        });
+
+        btn_guardarBinario.setText("GuardarBinario");
+        btn_guardarBinario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_guardarBinarioMouseClicked(evt);
+            }
+        });
+
+        txt_binario.setColumns(20);
+        txt_binario.setRows(5);
+        jScrollPane2.setViewportView(txt_binario);
+
+        javax.swing.GroupLayout jpanel_muestraLayout = new javax.swing.GroupLayout(jpanel_muestra);
+        jpanel_muestra.setLayout(jpanel_muestraLayout);
+        jpanel_muestraLayout.setHorizontalGroup(
+            jpanel_muestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpanel_muestraLayout.createSequentialGroup()
+                .addGroup(jpanel_muestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpanel_muestraLayout.createSequentialGroup()
+                        .addGap(174, 174, 174)
+                        .addComponent(btn_abrirBinario)
+                        .addGap(238, 238, 238)
+                        .addComponent(btn_guardarBinario))
+                    .addGroup(jpanel_muestraLayout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(135, Short.MAX_VALUE))
+        );
+        jpanel_muestraLayout.setVerticalGroup(
+            jpanel_muestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpanel_muestraLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGroup(jpanel_muestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_guardarBinario)
+                    .addComponent(btn_abrirBinario))
+                .addGap(50, 50, 50))
+        );
+
+        jTabbedPane1.addTab("Archivo Binario", jpanel_muestra);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(375, 375, 375)
-                .addComponent(jLabel1)
+                .addGap(56, 56, 56)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 918, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 53, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(190, 190, 190)
-                .addComponent(btn_cargar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_guardar)
-                .addGap(285, 285, 285))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_cargar)
-                    .addComponent(btn_guardar))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(171, Short.MAX_VALUE))
         );
 
         pack();
@@ -98,62 +184,148 @@ public class Principal extends javax.swing.JFrame {
     private void btn_cargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cargarMouseClicked
         //1. seleccionar el archivo.
         JFileChooser filechooser = new JFileChooser();
-        int estado= filechooser.showOpenDialog(this);
-        if(estado == JFileChooser.APPROVE_OPTION){
-            File seleccionado= filechooser.getSelectedFile();
+        int estado = filechooser.showOpenDialog(this);
+        if (estado == JFileChooser.APPROVE_OPTION) {
+            File seleccionado = filechooser.getSelectedFile();
             System.out.println("Archivo seleccionado: ");
             System.out.println(seleccionado.getAbsolutePath());
             // Los archivos no se cargan completos. 
-            
+
             //Buffers 
-            try{
+            try {
                 // crear buffer 
                 FileReader fr = new FileReader(seleccionado);
                 BufferedReader br = new BufferedReader(fr);
-                String linea ;
-               do {
+                String linea;
+                do {
                     linea = br.readLine();
-                     if(linea != null){
-                         String [] elementos = linea.split(",");
-                     if(elementos.length <5){
-                         System.out.println("Linea imcompleta");
-                         System.out.println(linea);
-                     }else{
-                         // Parseo: leer informacion que viene en un formato y analizarla y separarla
-                         System.out.println("INFORMACION PARA CREAR UN OBJETO");
-                         // convertir de string a un numero
-                         int dinero = Integer.parseInt(elementos[3]);
-                         // crear el arreglo de los juegos 
-                         String cadena = elementos[4];
-                        // Substring
-                       cadena = cadena.substring(1, cadena.length()-1);
-                        //Replace
+                    if (linea != null) {
+                        String[] elementos = linea.split(",");
+                        if (elementos.length < 5) {
+                            System.out.println("Linea incompleta");
+                            System.out.println(linea);
+                        } else {
+                            // Parseo: leer informacion que viene en un formato y analizarla y separarla
+                            System.out.println("INFORMACION PARA CREAR UN OBJETO");
+                            // convertir de string a un numero
+                            int dinero = Integer.parseInt(elementos[3]);
+                            // crear el arreglo de los juegos 
+                            String cadena = elementos[4];
+                            // Substring
+                            cadena = cadena.substring(1, cadena.length() - 1);
+                            //Replace
 //                        cadena = cadena.replace("[","");
 //                        cadena =cadena.replace("]","");
 
-                        System.out.println(cadena);
-                       String[] juegos = cadena.split("-");                     
-                         Usuario nuevo = new Usuario(elementos[0],elementos[1],elementos[2],dinero,juegos);
-                         usuarios.add(nuevo);
-                     }
-                    
-                    txt_info.append(linea+"\n");
-                     }
-               }while(linea!=null);
+                            System.out.println(cadena);
+                            String[] juegos = cadena.split("-");
+                            Usuario nuevo = new Usuario(elementos[0], elementos[1], elementos[2], dinero, juegos);
+                            usuarios.add(nuevo);
+                        }
+
+                        txt_info.append(linea + "\n");
+                    }
+                } while (linea != null);
+                br.close();
                 System.out.println("Llegamos al final del file");
-                
-                
+
             } catch (FileNotFoundException ex) {
                 System.out.println("Archivo no encontrado");
             } catch (IOException ex) {
                 Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
 
         }
-        
+
     }//GEN-LAST:event_btn_cargarMouseClicked
+
+    private void btn_guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarMouseClicked
+        JFileChooser filechooser = new JFileChooser();
+        int estado = filechooser.showSaveDialog(this);
+        if (estado == JFileChooser.APPROVE_OPTION) {
+            File archivo = filechooser.getSelectedFile();
+            try {
+                //   append 
+                /*
+                                append
+                                true -> append/ agregar antiene el contenido original del archivo y agrega lo que le estamos pasando 
+                                false -> override / sobreescribir el contenido del archivo ( borra el contenido viejo y agrega solo el contenido nuevo).
+                 */
+                FileWriter fr = new FileWriter(archivo, false);
+                BufferedWriter br = new BufferedWriter(fr);
+                br.write(txt_info.getText());
+
+                br.close();
+                JOptionPane.showMessageDialog(this,"ARCHIVO ACTUALIZADO");
+            } catch (IOException ex) {
+                System.out.println("Algo salio mal!");
+            }
+
+        }
+
+    }//GEN-LAST:event_btn_guardarMouseClicked
+
+    private void btn_guardarBinarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarBinarioMouseClicked
+       String [] juegos = {"Hola"};
+        Usuario user = new Usuario("c@c.com","123","clau",500.0,juegos);
+        usuarios.add(user);
+        usuarios.add(user);
+        JFileChooser filechooser = new JFileChooser();
+        int estado = filechooser.showSaveDialog(this);
+        if (estado == JFileChooser.APPROVE_OPTION) {
+            File archivo = filechooser.getSelectedFile();
+            
+            /*
+            Los archivos binarios nos permiten almaacenar objetos. 
+            */
+            /*
+            Pasos para escribir archivos binarios:
+            1) Utilizar las clases de escritura correctas (FileOutputStream,ObjectOutputStream )
+            2) Configurar la clase utilizando la interfaz "serializable"
+            */
+            try{
+                FileOutputStream fs = new FileOutputStream(archivo);
+                ObjectOutputStream os = new ObjectOutputStream(fs);
+                os.writeObject(usuarios);
+                os.close();
+                JOptionPane.showMessageDialog(this,"ARCHIVO ACTUALIZADO");
+            }catch(Exception e){
+                System.out.println("algo salio mal");
+                System.out.println(e);
+                
+            }
+        }
+    }//GEN-LAST:event_btn_guardarBinarioMouseClicked
+
+    private void btn_abrirBinarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_abrirBinarioMouseClicked
+       JFileChooser filechooser = new JFileChooser();
+        int estado = filechooser.showOpenDialog(this);
+        if (estado == JFileChooser.APPROVE_OPTION) {
+            File seleccionado = filechooser.getSelectedFile();
+            try{
+                FileInputStream fi = new FileInputStream(seleccionado);
+                ObjectInputStream oi = new ObjectInputStream(fi);
+                Object objeto = oi.readObject();
+                
+                if(objeto instanceof Usuario){
+                    Usuario u = (Usuario) objeto;
+                    txt_binario.setText(u.toString());
+                    
+                }else if(objeto instanceof ArrayList) {
+                    usuarios = (ArrayList<Usuario>) objeto;
+                     txt_binario.setText(usuarios.toString());
+                }
+                
+            } catch (FileNotFoundException ex) {
+               Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (IOException ex) {
+               Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (ClassNotFoundException ex) {
+               Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+           }
+            
+        }
+    }//GEN-LAST:event_btn_abrirBinarioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -191,10 +363,17 @@ public class Principal extends javax.swing.JFrame {
     }
     ArrayList<Usuario> usuarios = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_abrirBinario;
     private javax.swing.JButton btn_cargar;
     private javax.swing.JButton btn_guardar;
+    private javax.swing.JButton btn_guardarBinario;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel jpanel_muestra;
+    private javax.swing.JTextArea txt_binario;
     private javax.swing.JTextArea txt_info;
     // End of variables declaration//GEN-END:variables
 }

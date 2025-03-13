@@ -4,11 +4,13 @@
  */
 package clase_10032025;
 
+import java.io.Serializable;
+
 /**
  *
  * @author claudiacortes
  */
-public class Usuario {
+public class Usuario implements Serializable{
     private String email;
     private String password;
     private String username;
@@ -57,7 +59,11 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "email=" + email + ", password=" + password + ", username=" + username + ", dinero=" + dinero + '}';
+        String juego = "";
+        for (String juego1 : juegos) {
+            juego+= juego1+" \n";
+        }
+        return "Usuario{" + "email=" + email + ", password=" + password + ", username=" + username + ", dinero=" + dinero +"Juegos: "+juego+ '}';
     }
     
     
