@@ -266,9 +266,10 @@ public class Principal extends javax.swing.JFrame {
                     int val = pb_progreso.getValue();
                     val++;
                     int pogreso = val;
+                    
                     SwingUtilities.invokeLater(()->{
                         //normalmente se pone codigo que actualiza los elementos visuales, ayuda a que los hilos no "choquen"
-                            pb_progreso.setValue(pogreso); 
+                            pb_progreso.setValue(pogreso);
                     });
                    
                     contador=val;
