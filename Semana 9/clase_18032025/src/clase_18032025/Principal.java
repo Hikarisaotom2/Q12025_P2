@@ -115,8 +115,12 @@ public class Principal extends javax.swing.JFrame {
         Tortuga t1 = new Tortuga("Leonardo", 300, 0, "18/3/2025", "18/3/2029");
         Tortuga t2 = new Tortuga("Donatello", 500, 0, "18/3/2025", "18/3/2029");
         Tortuga t3 = new Tortuga("Michelangelo", 100, 0, "18/3/2025", "18/3/2029");
-        Tortuga t4 = new Tortuga("Raphael", 600, 0, "18/3/2025", "18/3/2029");
-
+        Tortuga t4 = new Tortuga("Raphael", 60, 0, "18/3/2025", "18/3/2029");
+        jpb_tortuga1.setValue(0);
+        jpb_tortuga2.setValue(0);
+        jpb_tortuga3.setValue(0);
+        jpb_tortuga4.setValue(0);
+        tortugaGanadora = -1;
         lbl_t1.setText(t1.getNombre());
         lbl_t2.setText(t2.getNombre());
         lbl_t3.setText(t3.getNombre());
